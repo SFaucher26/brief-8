@@ -1,3 +1,11 @@
+
+#  Brief 8 #
+### 1 - Forker le projet pour l'ouvrir dans un editeur de code ###
+### 2 - Se référer au Diagramme de classes du brief 9 ci-dessous ###
+### 3 - Dans la class Main cliquer sur "run" pour afficher le scénario des logs dans le terminal ###
+
+#  Brief 9 #
+# Diagramme de classes #
 ```mermaid
 ---
 title: UML Nebula Game Labs
@@ -48,7 +56,6 @@ classDiagram
     Unit : + goTo(Building)
     Unit : + viewDetails()
     class Villager{
-        + String contenant
         + collection(resources)
     }
     class Artisan{
@@ -138,5 +145,28 @@ classDiagram
 
 
 ```
-1 - Cloner ou forker le projet pour l'ouvrir dans un editeur de code
-2 - Dans la class Main cliquer sur "run" pour afficher le scénario des logs
+# Diagramme de séquence #
+### Scenario brief 9 ###
+
+```mermaid
+
+
+sequenceDiagram
+    actor Villageois
+    participant Maison
+    participant Village
+    participant Mur
+    participant Exterieur
+    
+    participant SoldatsEnnemis
+
+    Villageois->>Exterieur: Part récolter des ressources
+    Exterieur-->>Mur: Ramène les ressources
+    Note right of Mur: Pour construire un nouveau mur de défense au village
+    Villageois->>Maison: Va se reposer
+    Note right of Maison: Nuit
+    SoldatsEnnemis-xMur: Attaquent le village
+    Note right of Mur: Détruisent le nouveau mur 
+
+```
+

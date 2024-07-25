@@ -1,4 +1,4 @@
-package humains;
+package units;
 
 public enum Weapon {
     PISTOL("pistolet"),

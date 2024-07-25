@@ -1,66 +1,74 @@
-
-import humains.Villageois;
-import humains.Weapon;
-import ressources.Resources;
-import humains.Soldat;
-import humains.Eclaireur;
-import batiments.Atelier;
-import batiments.Caserne;
-import batiments.Dormitory;
-import batiments.Garden;
-import batiments.Hangar;
-import batiments.Maison;
-import batiments.Wall;
-import humains.Artisan;
-import humains.Chef;
+import ressources.Food;
+import units.Accessory;
+import units.Artisan;
+import units.Chief;
+import units.Scout;
+import units.Soldier;
+import units.Villager;
+import units.Weapon;
+import buildings.WorkShop;
+import buildings.Barrack;
+import buildings.House;
+import buildings.Wall;
 
 public class Main {
-    public static void main (String[] args){
-      // Instanciation d'un villageois
-      Villageois villageois1 = new Villageois("homme","INGALS","Charles",50, 1.80, 75, "une brouette", Resources.FOOD);
-      Maison maison1 = new Maison(60, 5, 3, 4, new Garden());
-      villageois1.viewDetails();
-      villageois1.collectRessources(Resources.FOOD);
-      villageois1.moveInTheCity();
-      villageois1.sleepInTheHouse(maison1);
-      maison1.viewDetails();
+  public static void main(String[] args) {
 
-      // Instanciation d'un soldat
-      Soldat soldat1 = new Soldat("femme", "KROFT", "Lara", 30, 1.75, 65, Weapon.SNIPER);
-      Caserne caserne = new Caserne(600, 50, 8, 20, new Hangar(), new Dormitory());
-      Wall wall = new Wall(0, 0, 0, 0, null);
-      soldat1.viewDetails();
-      soldat1.haveAWeapon();
-      soldat1.inFrontTheWall(wall);
-      soldat1.outside();
-      soldat1.inTheBarracks(caserne);
-      caserne.viewDetails();
+    //--------------SCENARIO D'EXEMPLES D'INTERACTIVITE---------------//
+    // Instanciation d'un Villager
+    Villager villager1 = new Villager("Men", "Joey");
+    villager1.viewDetails();
+    villager1.haveAnAccessory(Accessory.WHEELBARROW);
+    House house1 = new House("Joe House", 3);
+    house1.viewDetails();
+    Food pommes = new Food("pommes", "périssables");
+    villager1.collection(pommes);
+    villager1.move();
+    villager1.toRest(house1);
+   
 
-      // Instanciation d'un élcaireur 
-      Eclaireur eclaireur1 = new Eclaireur("homme", "JONES", "Indiana", 40, 1.80, 80, "ma lampe torche", "ma carte", Resources.WATER);
-      Maison maison2 = new Maison(100, 8, 4, 5, new Garden());
-      eclaireur1.viewDetails();
-      eclaireur1.goOut();
-      eclaireur1.inTheHouse(maison2);
-      maison2.viewDetails();
+    // Instanciation d'un Soldier
+    Soldier soldier1 = new Soldier("Men", "Soldat Ryan");
+    soldier1.viewDetails();
+    soldier1.haveAWeapon(Weapon.PISTOL);
+    Barrack barrack = new Barrack("La Caserne", 25);
+    barrack.viewDetails();
+    Wall wall = new Wall("Mur", 1);
+    wall.viewDetails();  
+    soldier1.defendBuilding(wall);
+    soldier1.move();
+    soldier1.toRest(barrack);
+   
 
-      // Instanciation d'un artisan
-      Artisan artisan1 = new Artisan("homme", "ALLTECH", "Vadim", 42, 1.83, 82);
-      Atelier atelier1= new Atelier(200, 5, 6, 3, new Hangar());
-      Maison maison3 = new Maison(150, 15, 10, 6, new Garden());
-      artisan1.viewDetails();
-      artisan1.goToBuilding();
-      artisan1.goToWorkShop(atelier1);
-      artisan1.goToSleep(maison3);
-      maison3.viewDetails();
-      artisan1.makeTools();
-      artisan1.restoreBuilding();
+    // Instanciation d'un élcaireur
+    Scout scout1 = new Scout("Men", "Indiana Jones");
+    scout1.viewDetails();
+    scout1.haveAnAccessory(Accessory.COMPASS);
+    scout1.move();
+    House house2 = new House("Indiana House", 6);
+    house2.viewDetails();
+    scout1.toRest(house2);
 
-      // Instanciation d'un chef
-      Chef chef = new Chef("femme", "WONDER", "Woman", 25, 1.65, 60, Weapon.PISTOL);
-      chef.viewDetails();
-      chef.haveAWeapon();
-      chef.motivate();
-    }
+   
+
+    // Instanciation d'un artisan
+    Artisan artisan1 = new Artisan("Men", "Paul");
+    artisan1.viewDetails();
+    WorkShop workShop1 = new WorkShop("ALLTECH Entreprise", 54);
+    workShop1.viewDetails();
+    House house3 = new House("Paul House", 55);
+    house3.viewDetails();
+    artisan1.makeToolsAndWeapon(workShop1);
+    artisan1.toRest(house3);
+    artisan1.restoreBuilding(house3);
+   
+
+    // Instanciation d'un Chief
+    Chief chief = new Chief("femme", "WONDER WOMAN");
+    chief.viewDetails();
+    chief.haveAWeapon(Weapon.SHOTGUN);
+    chief.motivate();
+    
+  }
 
 }

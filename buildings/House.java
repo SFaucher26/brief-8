@@ -1,6 +1,6 @@
 package buildings;
 
-public class House extends Building {
+public class House extends Building implements Buildable{
 
     // Attributs de Buildings
     public House(String name, int numero) {

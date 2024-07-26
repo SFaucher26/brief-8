@@ -38,15 +38,15 @@ classDiagram
 
 
 
-    Ressource --|> Bois
-    Ressource --|> Pierre
-    Ressource --|> Nourriture
-    Ressource --|> Fer
+    Ressource --|> Wood
+    Ressource --|> Stone
+    Ressource --|> Food
+    Ressource --|> Metal
 
-    Collectable --|> Nourriture
-    Collectable --|> Bois
+    Collectable --|> Food
+    Collectable --|> Wood
 
-
+    
     class Unit
     <<abstract>> Unit
     Unit : + String name
@@ -55,6 +55,7 @@ classDiagram
     Unit : + toRest()
     Unit : + goTo(Building)
     Unit : + viewDetails()
+    
     class Villager{
         + collection(resources)
     }
@@ -130,13 +131,13 @@ classDiagram
     Ressource : + String name
     Ressource : + String lifetime
     Ressource : + viewDetails()
-    class Bois {
+    class Wood {
     }
-    class Pierre{
+    class Stone{
     }
-    class Nourriture{
+    class Food{
     }
-    class Fer {
+    class Metal {
     }
 
     class Collectable
@@ -154,14 +155,13 @@ classDiagram
 sequenceDiagram
     actor Villageois
     participant Maison
-    participant Village
     participant Mur
-    participant Exterieur
-    
+    participant Village
+    participant Ressources
     participant SoldatsEnnemis
 
-    Villageois->>Exterieur: Part récolter des ressources
-    Exterieur-->>Mur: Ramène les ressources
+    Villageois->>Ressources: Part récolter des ressources
+    Ressources -->>Mur: Ramène les ressources
     Note right of Mur: Pour construire un nouveau mur de défense au village
     Villageois->>Maison: Va se reposer
     Note right of Maison: Nuit

@@ -1,6 +1,6 @@
 package buildings;
 
-public class Wall extends Building {
+public class Wall extends Building implements Buildable {
 
     public Wall(String name, int numero) {
         super(name, numero);
